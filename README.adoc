@@ -1,6 +1,13 @@
+Based on
+--------
+
+Fork of tellduslive library, with the ambition to adapt it to run against the localapi
+published by telldus. Further ambition to add a home-assistant component
+(reworked version of tellduslive component) which integrates it into home-assistant.
+
 Example
 
-  >  ./tellduslive.py 
+  >  ./tellduslocalapi.py 
   Devices
   -------
   Sensor@2263701:Basement(temp=8.6,humidity=59)

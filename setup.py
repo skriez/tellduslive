@@ -2,14 +2,14 @@
 
 from setuptools import setup
 
-setup(name="tellduslive",
-      version='0.3.4',
-      description="Communicate with Telldus Live",
-      url="https://github.com/molobrakos/tellduslive",
+setup(name="tellduslocalapi",
+      version='0.0.1',
+      description="Communicate with Telldus Local API",
+      url="https://github.com/skriez/tellduslocalapi",
       license="",
-      author="Erik",
-      author_email="Erik",
+      author="Emil",
+      author_email="emil+github@nylind.se",
       install_requires=['requests',
                         'requests_oauthlib'],
-      py_modules=["tellduslive"],
-      provides=["tellduslive"],)
+      py_modules=["tellduslocalapi"],
+      provides=["tellduslocalapi"],)

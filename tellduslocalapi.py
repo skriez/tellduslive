@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-"""Communicate with Telldus Live server."""
+"""Communicate with Telldus Local API."""
 
 import logging
 from datetime import timedelta
@@ -9,7 +9,7 @@ import requests
 from requests.compat import urljoin
 from requests_oauthlib import OAuth1
 
-__version__ = '0.3.4'
+__version__ = '0.0.1'
 
 _LOGGER = logging.getLogger(__name__)
 
