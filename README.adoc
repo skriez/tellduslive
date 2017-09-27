@@ -1,5 +1,6 @@
 Thanks to
 =========
+
 Work is based on `tellduslive` component by `@molobrakos`. The ambition is to turn his components for Telldus Live! into a component for Telldus LocalAPI.
 
 What is it
