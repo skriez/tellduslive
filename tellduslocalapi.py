@@ -74,13 +74,22 @@ class Client:
 
     def __init__(self,
                  ip_address,
-                 access_token):
+                 token):
+        access_token = _getAccessToken(ip_address, token)
+
         self._session = requests.Session()
         self._session.headers = { "Authorization": "Bearer "+access_token }
+        self.token = token
 
         self._state = {}
         self._api_url = "http://"+ip_address+"/api"
-        self._api_access_token = access_token
+
+    def _getAccessToken(ip_address, token):
+        url = "http://"+ip_address+"/api/token?token="+token
+        request = requests.get(url)
+        data = request.json()
+        return data.token
+
 
     def _device(self, device_id):
         """Return the raw representaion of a device."""
