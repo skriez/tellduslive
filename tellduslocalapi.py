@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 """Communicate with Telldus Local API."""
+""" TODO: Add token-renewal """
 
 import logging
 from datetime import timedelta
@@ -13,7 +14,6 @@ __version__ = '0.0.1'
 
 _LOGGER = logging.getLogger(__name__)
 
-API_URL = 'https://api.telldus.com/json/'
 TIMEOUT = timedelta(seconds=30)
 
 UNNAMED_DEVICE = 'NO NAME'
@@ -70,29 +70,26 @@ BAROMETRIC_PRESSURE = '?',
 
 
 class Client:
-    """Tellduslive client."""
+    """Telldus Local API client."""
 
     def __init__(self,
-                 public_key,
-                 private_key,
-                 token,
-                 token_secret):
+                 ip_address,
+                 access_token):
         self._session = requests.Session()
-        self._session.auth = OAuth1(
-            public_key,
-            private_key,
-            token,
-            token_secret)
+        self._session.headers = { "Authorization": "Bearer "+access_token }
+
         self._state = {}
+        self._api_url = "http://"+ip_address+"/api"
+        self._api_access_token = access_token
 
     def _device(self, device_id):
         """Return the raw representaion of a device."""
         return self._state.get(device_id)
 
     def request(self, url, **params):
-        """Send a request to the Tellstick Live API."""
+        """Send a request to the Tellstick Local API."""
         try:
-            url = urljoin(API_URL, url)
+            url = urljoin(self._api_url, url)
             _LOGGER.debug('Request %s %s', url, params)
             response = self._session.get(url,
                                          params=params,
@@ -139,7 +136,7 @@ class Client:
         def collect(devices):
             """Update local state."""
             self._state.update({device['id']: device
-                                for device in devices or {}
+
                                 if device['name']})
 
         devices = self.request_devices()
