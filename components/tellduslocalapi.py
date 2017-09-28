@@ -7,7 +7,7 @@ XXXXXXXXXXXXXXXXXX
 from datetime import datetime, timedelta
 import logging
 import sys
-if ('/config/custom_components') not in sys.path
+if '/config/custom_components' not in sys.path
     sys.path.append('/config/custom_components')
 
 from homeassistant.const import (
