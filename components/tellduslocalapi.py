@@ -7,7 +7,8 @@ XXXXXXXXXXXXXXXXXX
 from datetime import datetime, timedelta
 import logging
 import sys
-sys.path.append('/config/custom_components')
+if ('/config/custom_components') not in sys.path
+    sys.path.append('/config/custom_components')
 
 from homeassistant.const import (
     ATTR_BATTERY_LEVEL, DEVICE_DEFAULT_NAME, EVENT_HOMEASSISTANT_START)
